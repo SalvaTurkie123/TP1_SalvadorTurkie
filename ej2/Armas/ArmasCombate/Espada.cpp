@@ -1,12 +1,20 @@
-#include "Espada.h"
+#pragma once
+#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej2/Armas/ArmasCombate/ArmaCombate.h"
+#include <iostream>
+#include <string>
 
-Espada::Espada(string nombre, int danioFisico, double peso, string rareza, string material)
-    : ArmaCombate(nombre, danioFisico, peso, rareza, material) {}
+using namespace std;
 
-string Espada::obtenerMaterial() const {
-    return material;
-}
+class Espada : public ArmaCombate {
+public:
+    Espada(string nombre, int danioFisico, double peso, string rareza, string material)
+        : ArmaCombate(nombre, danioFisico, peso, rareza, material) {}
 
-void Espada::usar() const {
-    cout << "Usando la espada para un ataque preciso." << endl;
-}
+    string obtenerMaterial() const override {
+        return material;
+    }
+
+    void usar() const override {
+        cout << "Usando la espada para un ataque preciso." << endl;
+    }
+};

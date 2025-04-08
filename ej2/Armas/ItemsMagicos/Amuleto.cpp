@@ -1,12 +1,20 @@
-#include "Amuleto.h"
+#pragma once
+#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej2/Armas/ItemsMagicos/ItemMagico.h"
+#include <iostream>
+#include <string>
 
-Amuleto::Amuleto(string nombre, int poderMagico, double peso, string rareza, string elemento)
-    : ArmaMagica(nombre, poderMagico, peso, rareza, elemento) {}
+using namespace std;
 
-string Amuleto::obtenerElemento() const {
-    return elemento;
-}
+class Amuleto : public ArmaMagica {
+public:
+    Amuleto(string nombre, int poderMagico, double peso, string rareza, string elemento)
+        : ArmaMagica(nombre, poderMagico, peso, rareza, elemento) {}
 
-void Amuleto::usar() const {
-    cout << "Usando el amuleto para protegerse con magia." << endl;
-}
+    string obtenerElemento() const override {
+        return elemento;
+    }
+
+    void usar() const override {
+        cout << "Usando el amuleto para protegerse con magia." << endl;
+    }
+};

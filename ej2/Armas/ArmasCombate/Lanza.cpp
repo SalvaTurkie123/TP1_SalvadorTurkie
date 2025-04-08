@@ -1,12 +1,20 @@
-#include "Lanza.h"
+#pragma once
+#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej2/Armas/ArmasCombate/ArmaCombate.h"
+#include <iostream>
+#include <string>
 
-Lanza::Lanza(string nombre, int danioFisico, double peso, string rareza, string material)
-    : ArmaCombate(nombre, danioFisico, peso, rareza, material) {}
+using namespace std;
 
-string Lanza::obtenerMaterial() const {
-    return material;
-}
+class Lanza : public ArmaCombate {
+public:
+    Lanza(string nombre, int danioFisico, double peso, string rareza, string material)
+        : ArmaCombate(nombre, danioFisico, peso, rareza, material) {}
 
-void Lanza::usar() const {
-    cout << "Usando la lanza para atacar a distancia." << endl;
-}
+    string obtenerMaterial() const override {
+        return material;
+    }
+
+    void usar() const override {
+        cout << "Usando la lanza para atacar a distancia." << endl;
+    }
+};

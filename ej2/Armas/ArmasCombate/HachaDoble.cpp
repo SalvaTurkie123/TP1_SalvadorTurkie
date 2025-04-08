@@ -1,12 +1,20 @@
-#include "HachaDoble.h"
+#pragma once
+#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej2/Armas/ArmasCombate/ArmaCombate.h"
+#include <iostream>
+#include <string>
 
-HachaDoble::HachaDoble(string nombre, int danioFisico, double peso, string rareza, string material)
-    : ArmaCombate(nombre, danioFisico, peso, rareza, material) {}
+using namespace std;
 
-string HachaDoble::obtenerMaterial() const {
-    return material;
-}
+class HachaDoble : public ArmaCombate {
+public:
+    HachaDoble(string nombre, int danioFisico, double peso, string rareza, string material)
+        : ArmaCombate(nombre, danioFisico, peso, rareza, material) {}
 
-void HachaDoble::usar() const {
-    cout << "Usando el hacha doble para un ataque devastador." << endl;
-}
+    string obtenerMaterial() const override {
+        return material;
+    }
+
+    void usar() const override {
+        cout << "Usando el hacha doble para un ataque devastador." << endl;
+    }
+};

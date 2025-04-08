@@ -1,12 +1,20 @@
-#include "LibroHechizos.h"
+#pragma once
+#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej2/Armas/ItemsMagicos/ItemMagico.h"
+#include <iostream>
+#include <string>
 
-LibroHechizos::LibroHechizos(string nombre, int poderMagico, double peso, string rareza, string elemento)
-    : ArmaMagica(nombre, poderMagico, peso, rareza, elemento) {}
+using namespace std;
 
-string LibroHechizos::obtenerElemento() const {
-    return elemento;
-}
+class LibroHechizos : public ArmaMagica {
+public:
+    LibroHechizos(string nombre, int poderMagico, double peso, string rareza, string elemento)
+        : ArmaMagica(nombre, poderMagico, peso, rareza, elemento) {}
 
-void LibroHechizos::usar() const {
-    cout << "Usando el libro de hechizos para invocar magia." << endl;
-}
+    string obtenerElemento() const override {
+        return elemento;
+    }
+
+    void usar() const override {
+        cout << "Usando el libro de hechizos para invocar magia." << endl;
+    }
+};

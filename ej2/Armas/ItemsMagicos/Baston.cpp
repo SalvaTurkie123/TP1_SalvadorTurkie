@@ -1,12 +1,20 @@
-#include "Baston.h"
+#pragma once
+#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej2/Armas/ItemsMagicos/ItemMagico.h"
+#include <iostream>
+#include <string>
 
-Baston::Baston(string nombre, int poderMagico, double peso, string rareza, string elemento)
-    : ArmaMagica(nombre, poderMagico, peso, rareza, elemento) {}
+using namespace std;
 
-string Baston::obtenerElemento() const {
-    return elemento;
-}
+class Baston : public ArmaMagica {
+public:
+    Baston(string nombre, int poderMagico, double peso, string rareza, string elemento)
+        : ArmaMagica(nombre, poderMagico, peso, rareza, elemento) {}
 
-void Baston::usar() const {
-    cout << "Usando el bastón para lanzar un hechizo." << endl;
-}
+    string obtenerElemento() const override {
+        return elemento;
+    }
+
+    void usar() const override {
+        cout << "Usando el bastón para lanzar un hechizo." << endl;
+    }
+};
