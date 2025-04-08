@@ -24,3 +24,13 @@
 #include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej2/Armas/ItemsMagicos/Pocion.cpp"
 #include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej2/Armas/ItemsMagicos/Amuleto.cpp"
 
+void PersonajeFactory::inicializarRandom() {
+    // Inicializa el generador de números aleatorios con la hora actual
+    srand(static_cast<unsigned int>(time(nullptr)));
+}
+
+int PersonajeFactory::generarNumeroAleatorio(int min, int max) {
+    // Genera un número aleatorio en el rango [min, max]
+    return rand() % (max - min + 1) + min;
+}
+
