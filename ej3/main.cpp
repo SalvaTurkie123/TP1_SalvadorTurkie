@@ -12,16 +12,13 @@ int main() {
     // Inicializar el generador de números aleatorios
     PersonajeFactory::inicializarRandom();
 
-    // Generar números aleatorios en el rango [3, 7]
-    int cantidadMagos = PersonajeFactory::generarNumeroAleatorio(3, 7);
-    int cantidadGuerreros = PersonajeFactory::generarNumeroAleatorio(3, 7);
+    // Crear un personaje
+    auto personaje = PersonajeFactory::crearPersonaje("Hechicero");
+    cout << "Personaje creado: " << personaje->obtenerNombre() << endl;
 
-    cout << "Cantidad de magos: " << cantidadMagos << endl;
-    cout << "Cantidad de guerreros: " << cantidadGuerreros << endl;
-
-    // Generar un número aleatorio en el rango [0, 2] para las armas
-    int cantidadArmas = PersonajeFactory::generarNumeroAleatorio(0, 2);
-    cout << "Cantidad de armas para un personaje: " << cantidadArmas << endl;
+    // Crear un arma
+    auto arma = PersonajeFactory::crearArma("Espada");
+    cout << "Arma creada: " << arma->obtenerNombre() << endl;
 
     return 0;
 }
