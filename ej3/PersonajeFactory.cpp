@@ -59,3 +59,28 @@ shared_ptr<IPersonaje> PersonajeFactory::crearPersonaje(const string& tipo) {
     }
 }
 
+// Método para crear un arma dinámicamente
+shared_ptr<IArma> PersonajeFactory::crearArma(const string& tipo) {
+    if (tipo == "Espada") {
+        return make_shared<Espada>("Espada", 50, 5.0, "Rara", "Acero");
+    } else if (tipo == "Garrote") {
+        return make_shared<Garrote>("Garrote", 30, 4.0, "Común", "Madera");
+    } else if (tipo == "HachaSimple") {
+        return make_shared<HachaSimple>("Hacha Simple", 40, 6.0, "Común", "Hierro");
+    } else if (tipo == "HachaDoble") {
+        return make_shared<HachaDoble>("Hacha Doble", 60, 8.0, "Épica", "Acero");
+    } else if (tipo == "Lanza") {
+        return make_shared<Lanza>("Lanza", 45, 5.5, "Rara", "Acero");
+    } else if (tipo == "Baston") {
+        return make_shared<Baston>("Baston", 20, 3.0, "Común", "Madera");
+    } else if (tipo == "LibroHechizos") {
+        return make_shared<LibroHechizos>("Libro de Hechizos", 35, 2.5, "Raro", "Papel");
+    } else if (tipo == "Pocion") {
+        return make_shared<Pocion>("Poción", 0, 1.0, "Común", "Cristal");
+    } else if (tipo == "Amuleto") {
+        return make_shared<Amuleto>("Amuleto", 10, 0.5, "Épico", "Oro");
+    } else {
+        throw invalid_argument("Tipo de arma no reconocido: " + tipo);
+    }
+}
+
