@@ -5,6 +5,7 @@ using namespace std;
 
 class ArmaMagica : public IArma {
 protected:
+
     string nombre;
     int poderMagico;
     double peso;
@@ -12,6 +13,7 @@ protected:
     string elemento;
 
 public:
+
     ArmaMagica(string nombre, int poderMagico, double peso, string rareza, string elemento)
         : nombre(nombre), poderMagico(poderMagico), peso(peso), rareza(rareza), elemento(elemento) {}
 

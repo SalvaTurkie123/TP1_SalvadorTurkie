@@ -1,3 +1,6 @@
+#include <iostream>
+#include <vector>
+
 #include "PersonajeFactory.h"
 
 #include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej2/Personajes/Magos/Magos.h"
@@ -82,5 +85,31 @@ shared_ptr<IArma> PersonajeFactory::crearArma(const string& tipo) {
     } else {
         throw invalid_argument("Tipo de arma no reconocido: " + tipo);
     }
+}
+
+
+// Método para crear un personaje armado
+shared_ptr<IPersonaje> PersonajeFactory::crearPersonajeArmado(const string& tipoPersonaje, int cantidadArmas) {
+    // Crear el personaje
+    auto personaje = crearPersonaje(tipoPersonaje);
+
+    // Generar las armas y asignarlas al personaje
+    cout << "Creando personaje armado: " << personaje->obtenerNombre() << endl;
+    cout << "Cantidad de armas: " << cantidadArmas << endl;
+
+    for (int i = 0; i < cantidadArmas; ++i) {
+        // Generar un tipo de arma aleatorio
+        vector<string> tiposArmas = {"Espada", "Garrote", "HachaSimple", "HachaDoble", "Lanza", "Baston", "LibroHechizos", "Pocion", "Amuleto"};
+        int indiceArma = generarNumeroAleatorio(0, tiposArmas.size() - 1);
+        auto arma = crearArma(tiposArmas[indiceArma]);
+
+        // Mostrar información del arma generada
+        cout << "  Arma asignada: " << arma->obtenerNombre() << " (" << arma->obtenerRareza() << ")" << endl;
+
+        // Aquí podrías agregar lógica para asociar el arma al personaje
+        // Por ejemplo, si el personaje tiene un vector de armas, podrías agregar el arma allí.
+    }
+
+    return personaje;
 }
 

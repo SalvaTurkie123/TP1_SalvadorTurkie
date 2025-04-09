@@ -18,3 +18,4 @@ public:
         cout << "Usando el amuleto para protegerse con magia." << endl;
     }
 };
+

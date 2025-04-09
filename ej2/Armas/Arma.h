@@ -11,5 +11,6 @@ public:
     virtual int obtenerDanio() const = 0;
     virtual double obtenerPeso() const = 0;
     virtual string obtenerRareza() const = 0;
+    
     virtual void usar() const = 0;
 };
