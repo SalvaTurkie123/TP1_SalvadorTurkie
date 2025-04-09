@@ -105,11 +105,40 @@ shared_ptr<IPersonaje> PersonajeFactory::crearPersonajeArmado(const string& tipo
 
         // Mostrar información del arma generada
         cout << "  Arma asignada: " << arma->obtenerNombre() << " (" << arma->obtenerRareza() << ")" << endl;
-
-        // Aquí podrías agregar lógica para asociar el arma al personaje
-        // Por ejemplo, si el personaje tiene un vector de armas, podrías agregar el arma allí.
     }
 
     return personaje;
 }
 
+// Método para generar personajes con armas
+vector<shared_ptr<IPersonaje>> PersonajeFactory::generarPersonajesConArmas() {
+    vector<shared_ptr<IPersonaje>> personajes;
+
+    // Generar cantidad aleatoria de magos y guerreros
+    int cantidadMagos = generarNumeroAleatorio(3, 7);
+    int cantidadGuerreros = generarNumeroAleatorio(3, 7);
+
+    cout << "Generando " << cantidadMagos << " magos y " << cantidadGuerreros << " guerreros." << endl;
+
+    // Tipos de magos y guerreros disponibles
+    vector<string> tiposMagos = {"Hechicero", "Conjurador", "Brujo", "Nigromante"};
+    vector<string> tiposGuerreros = {"Barbaro", "Caballero", "Gladiador", "Mercenario", "Paladin"};
+
+    // Generar magos
+    for (int i = 0; i < cantidadMagos; ++i) {
+        int indiceMago = generarNumeroAleatorio(0, tiposMagos.size() - 1);
+        int cantidadArmas = generarNumeroAleatorio(0, 2);
+        auto mago = crearPersonajeArmado(tiposMagos[indiceMago], cantidadArmas);
+        personajes.push_back(mago);
+    }
+
+    // Generar guerreros
+    for (int i = 0; i < cantidadGuerreros; ++i) {
+        int indiceGuerrero = generarNumeroAleatorio(0, tiposGuerreros.size() - 1);
+        int cantidadArmas = generarNumeroAleatorio(0, 2);
+        auto guerrero = crearPersonajeArmado(tiposGuerreros[indiceGuerrero], cantidadArmas);
+        personajes.push_back(guerrero);
+    }
+
+    return personajes;
+}

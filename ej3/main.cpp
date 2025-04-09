@@ -12,13 +12,14 @@ int main() {
     // Inicializar el generador de números aleatorios
     PersonajeFactory::inicializarRandom();
 
-    // Crear un personaje
-    auto personaje = PersonajeFactory::crearPersonaje("Hechicero");
-    cout << "Personaje creado: " << personaje->obtenerNombre() << endl;
+    // Generar personajes con armas
+    auto personajes = PersonajeFactory::generarPersonajesConArmas();
 
-    // Crear un arma
-    auto arma = PersonajeFactory::crearArma("Espada");
-    cout << "Arma creada: " << arma->obtenerNombre() << endl;
+    // Mostrar los personajes generados
+    cout << "\nPersonajes generados:\n";
+    for (const auto& personaje : personajes) {
+        cout << " - " << personaje->obtenerNombre() << endl;
+    }
 
     return 0;
 }

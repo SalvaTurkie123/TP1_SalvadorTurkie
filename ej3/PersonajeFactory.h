@@ -25,4 +25,8 @@ public:
 
     // Método para crear un personaje armado
     static shared_ptr<IPersonaje> crearPersonajeArmado(const string& tipoPersonaje, int cantidadArmas);
+
+    // Nuevo método para generar personajes con armas
+    static vector<shared_ptr<IPersonaje>> generarPersonajesConArmas();
+
 };
