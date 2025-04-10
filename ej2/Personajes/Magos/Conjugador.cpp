@@ -1,4 +1,3 @@
-#pragma once
 #include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej2/Personajes/Magos/Magos.h"
 #include <iostream>
 #include <string>
