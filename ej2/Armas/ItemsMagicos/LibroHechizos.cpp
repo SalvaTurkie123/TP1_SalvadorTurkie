@@ -1,4 +1,3 @@
-#pragma once
 #include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej2/Armas/ItemsMagicos/ItemMagico.h"
 #include <iostream>
 #include <string>
