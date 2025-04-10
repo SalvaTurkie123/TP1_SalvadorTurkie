@@ -90,6 +90,7 @@ shared_ptr<IArma> PersonajeFactory::crearArma(const string& tipo) {
 
 // Método para crear un personaje armado
 shared_ptr<IPersonaje> PersonajeFactory::crearPersonajeArmado(const string& tipoPersonaje, int cantidadArmas) {
+
     // Crear el personaje
     auto personaje = crearPersonaje(tipoPersonaje);
 
@@ -97,11 +98,14 @@ shared_ptr<IPersonaje> PersonajeFactory::crearPersonajeArmado(const string& tipo
     cout << "Creando personaje armado: " << personaje->obtenerNombre() << endl;
     cout << "Cantidad de armas: " << cantidadArmas << endl;
 
+
+    vector<string> tiposArmas = {"Espada", "Garrote", "HachaSimple", "HachaDoble", "Lanza", "Baston", "LibroHechizos", "Pocion", "Amuleto"};
     for (int i = 0; i < cantidadArmas; ++i) {
+
         // Generar un tipo de arma aleatorio
-        vector<string> tiposArmas = {"Espada", "Garrote", "HachaSimple", "HachaDoble", "Lanza", "Baston", "LibroHechizos", "Pocion", "Amuleto"};
-        int indiceArma = generarNumeroAleatorio(0, tiposArmas.size() - 1);
+       int indiceArma = generarNumeroAleatorio(0, tiposArmas.size() - 1);
         auto arma = crearArma(tiposArmas[indiceArma]);
+        personaje->agregarArma(arma);
 
         // Mostrar información del arma generada
         cout << "  Arma asignada: " << arma->obtenerNombre() << " (" << arma->obtenerRareza() << ")" << endl;
