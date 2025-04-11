@@ -31,16 +31,37 @@ void Batalla::iniciar(){
     while (hpJugador1 > 0 && hpJugador2 > 0) {
 
         // Mostrar vida actual
+        cout << "Vida actual del juagador 1: " << jugador1->obtenerNombre() << " tiene " << hpJugador1 << " HP\n";
+        cout << "Vida actual del juagador 2: " << jugador2->obtenerNombre() << " tiene " << hpJugador2 << " HP\n";
 
         // Opcion jugador 1 
+        int opcionJugador1;
+        cout << "Elegí tu ataque: (1: Golpe Fuerte, 2: Golpe Rapido, 3: Defensa y Golpe) ";
+        cin >> opcionJugador1;
 
         // Opcion jugador 2
+        int opcionJugador2 = rand() % 3 + 1;
+
+        cout << " El jugador 1 ( " << jugador1->obtenerNombre() << " ) usó " << obtenerNombreAtaque(opcionJugador1) <<  ".\n";
+        cout << " El jugador 2 ( " << jugador2->obtenerNombre() << " ) usó " << obtenerNombreAtaque(opcionJugador2) <<  ".\n";
 
         // Calcular el resultado
+        int resultado = calcularResultado(opcionJugador1, opcionJugador2);
+        if (resultado == 1) {
+            cout << jugador1->obtenerNombre() << " gana esta ronda y hace 10 puntos de daño.";
+            hpJugador2 -= 10;
+        }
+        else if (resultado == -1) {
+            cout << jugador2->obtenerNombre() << " gana esta ronda y hace 10 puntos de daño.";
+            hpJugador1 -= 10;
+        }
+        else cout << "Hubo un empate, nadie recibe daño";
 
         // Mostrar el ganador
-
-
+        if (hpJugador1 > 0) {
+            cout << jugador1->obtenerNombre() << " gano la batalla con " << hpJugador1 << " de vida restante. \n";
+        }
+        else cout << jugador2->obtenerNombre() << " gano la batalla con " << hpJugador2 << " de vida restante. \n";
 
     }
 
