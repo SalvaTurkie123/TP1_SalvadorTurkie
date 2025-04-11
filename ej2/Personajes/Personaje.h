@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <memory>
+#include <vector>
 #include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej2/Armas/Arma.h"
 
 using namespace std;
