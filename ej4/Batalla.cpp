@@ -26,13 +26,18 @@ int Batalla::calcularResultado(int opcionJugador1, int opcionJugador2) const {
 
 void Batalla::iniciar(){
 
-    cout << "Comienza la batalla entre " << jugador1->obtenerNombre() << "y " << jugador2->obtenerNombre() << "!\n";
+    cout << "Comienza la batalla entre un " << jugador1->obtenerNombre() << " y un " << jugador2->obtenerNombre() << "!\n";
 
     while (hpJugador1 > 0 && hpJugador2 > 0) {
 
         // Mostrar vida actual
         cout << "Vida actual del juagador 1: " << jugador1->obtenerNombre() << " tiene " << hpJugador1 << " HP\n";
         cout << "Vida actual del juagador 2: " << jugador2->obtenerNombre() << " tiene " << hpJugador2 << " HP\n";
+
+        // Mostrar armas de los jugadores
+        string armaJugador1 = jugador1->obtenerArmas().empty() ? "sin arma" : jugador1->obtenerArmas()[0]->obtenerNombre();
+        string armaJugador2 = jugador2->obtenerArmas().empty() ? "sin arma" : jugador2->obtenerArmas()[0]->obtenerNombre();
+       
 
         // Opcion jugador 1 
         int opcionJugador1;
@@ -42,8 +47,8 @@ void Batalla::iniciar(){
         // Opcion jugador 2
         int opcionJugador2 = rand() % 3 + 1;
 
-        cout << " El jugador 1 (" << jugador1->obtenerNombre() << ") usó " << obtenerNombreAtaque(opcionJugador1) <<  ".\n";
-        cout << " El jugador 2 (" << jugador2->obtenerNombre() << ") usó " << obtenerNombreAtaque(opcionJugador2) <<  ".\n";
+        cout << " El jugador 1 (" << jugador1->obtenerNombre() << ") ataca con " << armaJugador1 << " usando " << obtenerNombreAtaque(opcionJugador1) << ".\n";
+        cout << " El jugador 2 (" << jugador2->obtenerNombre() << ") ataca con " << armaJugador2 << " usando " << obtenerNombreAtaque(opcionJugador2) << ".\n";
 
         // Calcular el resultado
         int resultado = calcularResultado(opcionJugador1, opcionJugador2);
