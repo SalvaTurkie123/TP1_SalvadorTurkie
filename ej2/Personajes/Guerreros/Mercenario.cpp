@@ -1,27 +1,23 @@
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej2/Personajes/Guerreros/Guerreros.h"
+#include "Mercenario.h"
 #include <iostream>
-#include <string>
 
 using namespace std;
 
-class Mercenario : public Guerrero {
-public:
-    Mercenario(string nombre, int nivel, int vida, int fuerza, string armaFavorita)
-        : Guerrero(nombre, nivel, vida, fuerza, armaFavorita) {}
+Mercenario::Mercenario(string nombre, int nivel, int vida, int fuerza, string armaFavorita)
+    : Guerrero(nombre, nivel, vida, fuerza, armaFavorita) {}
 
-    void atacar() const override {
-        cout << nombre << " ataca con su " << armaFavorita << " por una recompensa." << endl;
-    }
+void Mercenario::atacar() const {
+    cout << nombre << " ataca con su " << armaFavorita << " por una recompensa." << endl;
+}
 
-    void defender() const override {
-        cout << nombre << " esquiva el ataque con agilidad." << endl;
-    }
+void Mercenario::defender() const {
+    cout << nombre << " usa su experiencia para bloquear el ataque." << endl;
+}
 
-    void usarHabilidadEspecial() const override {
-        cout << nombre << " negocia para obtener una ventaja en combate." << endl;
-    }
+void Mercenario::usarHabilidadEspecial() const {
+    cout << nombre << " realiza un ataque sorpresa para desorientar al enemigo." << endl;
+}
 
-    void mejorarArma() override {
-        cout << nombre << " mejora su " << armaFavorita << " para aumentar su efectividad." << endl;
-    }
-};
+void Mercenario::mejorarArma() {
+    cout << nombre << " mejora su " << armaFavorita << " para aumentar su daño." << endl;
+}

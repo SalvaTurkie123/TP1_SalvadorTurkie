@@ -12,15 +12,13 @@ protected:
     string material;
 
 public:
-    ArmaCombate(string nombre, int danioFisico, double peso, string rareza, string material)
-        : nombre(nombre), danioFisico(danioFisico), peso(peso), rareza(rareza), material(material) {}
+    ArmaCombate(string nombre, int danioFisico, double peso, string rareza, string material);
+    virtual ~ArmaCombate();
 
-    virtual ~ArmaCombate() {}
-
-    string obtenerNombre() const override { return nombre; }
-    int obtenerDanio() const override { return danioFisico; }
-    double obtenerPeso() const override { return peso; }
-    string obtenerRareza() const override { return rareza; }
+    string obtenerNombre() const override;
+    int obtenerDanio() const override;
+    double obtenerPeso() const override;
+    string obtenerRareza() const override;
 
     virtual string obtenerMaterial() const = 0;
 };

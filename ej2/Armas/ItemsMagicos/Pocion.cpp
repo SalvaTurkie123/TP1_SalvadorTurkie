@@ -1,19 +1,15 @@
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej2/Armas/ItemsMagicos/ItemMagico.h"
+#include "Pocion.h"
 #include <iostream>
-#include <string>
 
 using namespace std;
 
-class Pocion : public ArmaMagica {
-public:
-    Pocion(string nombre, int poderMagico, double peso, string rareza, string elemento)
-        : ArmaMagica(nombre, poderMagico, peso, rareza, elemento) {}
+Pocion::Pocion(string nombre, int poderMagico, double peso, string rareza, string elemento)
+    : ArmaMagica(nombre, poderMagico, peso, rareza, elemento) {}
 
-    string obtenerElemento() const override {
-        return elemento;
-    }
+string Pocion::obtenerElemento() const {
+    return elemento;
+}
 
-    void usar() const override {
-        cout << "Usando la poción para restaurar energía mágica." << endl;
-    }
-};
+void Pocion::usar() const {
+    cout << "Usando la poción para restaurar energía mágica." << endl;
+}

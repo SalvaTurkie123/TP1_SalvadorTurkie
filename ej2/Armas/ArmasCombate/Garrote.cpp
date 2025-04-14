@@ -1,19 +1,15 @@
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej2/Armas/ArmasCombate/ArmaCombate.h"
+#include "Garrote.h"
 #include <iostream>
-#include <string>
 
 using namespace std;
 
-class Garrote : public ArmaCombate {
-public:
-    Garrote(string nombre, int danioFisico, double peso, string rareza, string material)
-        : ArmaCombate(nombre, danioFisico, peso, rareza, material) {}
+Garrote::Garrote(string nombre, int danioFisico, double peso, string rareza, string material)
+    : ArmaCombate(nombre, danioFisico, peso, rareza, material) {}
 
-    string obtenerMaterial() const override {
-        return material;
-    }
+string Garrote::obtenerMaterial() const {
+    return material;
+}
 
-    void usar() const override {
-        cout << "Usando el garrote para un ataque contundente." << endl;
-    }
-};
+void Garrote::usar() const {
+    cout << "Usando el garrote para un ataque contundente." << endl;
+}

@@ -1,27 +1,23 @@
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej2/Personajes/Magos/Magos.h"
+#include "Nigromante.h"
 #include <iostream>
-#include <string>
 
 using namespace std;
 
-class Nigromante : public Mago {
-public:
-    Nigromante(string nombre, int nivel, int vida, int mana, string especialidad)
-        : Mago(nombre, nivel, vida, mana, especialidad) {}
+Nigromante::Nigromante(string nombre, int nivel, int vida, int mana, string especialidad)
+    : Mago(nombre, nivel, vida, mana, especialidad) {}
 
-    void atacar() const override {
-        cout << nombre << " invoca a los muertos para atacar." << endl;
-    }
+void Nigromante::atacar() const {
+    cout << nombre << " invoca a los muertos para atacar." << endl;
+}
 
-    void defender() const override {
-        cout << nombre << " usa magia de los muertos para protegerse." << endl;
-    }
+void Nigromante::defender() const {
+    cout << nombre << " usa magia de los muertos para protegerse." << endl;
+}
 
-    void lanzarHechizo() const override {
-        cout << nombre << " lanza un hechizo de necromancia de " << especialidad << "." << endl;
-    }
+void Nigromante::lanzarHechizo() const {
+    cout << nombre << " lanza un hechizo de necromancia de " << especialidad << "." << endl;
+}
 
-    void regenerarMana() override {
-        cout << nombre << " regenera su mana absorbiendo la energía de los muertos." << endl;
-    }
-};
+void Nigromante::regenerarMana() {
+    cout << nombre << " regenera su mana absorbiendo la energía de los muertos." << endl;
+}

@@ -1,27 +1,23 @@
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej2/Personajes/Guerreros/Guerreros.h"
+#include "Paladin.h"
 #include <iostream>
-#include <string>
 
 using namespace std;
 
-class Paladin : public Guerrero {
-public:
-    Paladin(string nombre, int nivel, int vida, int fuerza, string armaFavorita)
-        : Guerrero(nombre, nivel, vida, fuerza, armaFavorita) {}
+Paladin::Paladin(string nombre, int nivel, int vida, int fuerza, string armaFavorita)
+    : Guerrero(nombre, nivel, vida, fuerza, armaFavorita) {}
 
-    void atacar() const override {
-        cout << nombre << " ataca con su " << armaFavorita << " con precisión divina." << endl;
-    }
+void Paladin::atacar() const {
+    cout << nombre << " ataca con su " << armaFavorita << " con fervor divino." << endl;
+}
 
-    void defender() const override {
-        cout << nombre << " usa su escudo sagrado para bloquear el ataque." << endl;
-    }
+void Paladin::defender() const {
+    cout << nombre << " usa su escudo sagrado para protegerse." << endl;
+}
 
-    void usarHabilidadEspecial() const override {
-        cout << nombre << " invoca una bendición para curar a sus aliados." << endl;
-    }
+void Paladin::usarHabilidadEspecial() const {
+    cout << nombre << " invoca una bendición divina para fortalecer a sus aliados." << endl;
+}
 
-    void mejorarArma() override {
-        cout << nombre << " mejora su " << armaFavorita << " con magia sagrada." << endl;
-    }
-};
+void Paladin::mejorarArma() {
+    cout << nombre << " mejora su " << armaFavorita << " con magia sagrada." << endl;
+}
