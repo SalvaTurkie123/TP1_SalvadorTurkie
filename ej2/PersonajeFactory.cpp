@@ -35,6 +35,7 @@ int PersonajeFactory::generarNumeroAleatorio(int min, int max) {
 }
 
 // Método para crear un personaje dinámicamente
+/*Creación de personajes: El método crearPersonaje recibe un tipo de personaje como parámetro y devuelve un puntero a un objeto del tipo solicitado*/
 shared_ptr<IPersonaje> PersonajeFactory::crearPersonaje(const string& tipo) {
     if (tipo == "Hechicero") {
         return make_shared<Hechicero>("Hechicero", 1, 100, 50, "Fuego");
@@ -60,6 +61,7 @@ shared_ptr<IPersonaje> PersonajeFactory::crearPersonaje(const string& tipo) {
 }
 
 // Método para crear un arma dinámicamente
+/*Creación de armas: El método crearArma funciona de manera similar, devolviendo un puntero a un arma del tipo solicitado*/
 shared_ptr<IArma> PersonajeFactory::crearArma(const string& tipo) {
     if (tipo == "Espada") {
         return make_shared<Espada>("Espada", 50, 5.0, "Rara", "Acero");
@@ -86,6 +88,7 @@ shared_ptr<IArma> PersonajeFactory::crearArma(const string& tipo) {
 
 
 // Método para crear un personaje armado
+/*Creación de personajes armados: El método crearPersonajeArmado combina los dos anteriores para crear un personaje con un número específico de armas*/
 shared_ptr<IPersonaje> PersonajeFactory::crearPersonajeArmado(const string& tipoPersonaje, int cantidadArmas) {
     // Crear el personaje
     auto personaje = crearPersonaje(tipoPersonaje);

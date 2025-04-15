@@ -17,8 +17,6 @@ int main() {
         cout << i + 1 << ": " << personajesDisponibles[i] << "\n";
     }
 
-//------------------------------------------------------------------------------------------
-
     // Elegir personaje
     long unsigned int opcionPersonaje;
     cin >> opcionPersonaje;
@@ -36,10 +34,11 @@ int main() {
         "Baston", "LibroHechizos", "Pocion", "Amuleto"             // Armas mágicas
     };
 
-    // Mostrar armas disponibles
-    cout << "Elige un arma para tu personaje:\n";
+    // Mostrar armas disponibles con su daño
+    cout << "Elige un arma para tu personaje (se muestra el daño adicional que provoca cada arma):\n";
     for (size_t i = 0; i < armasDisponibles.size(); ++i) {
-        cout << i + 1 << ": " << armasDisponibles[i] << "\n";
+        auto armaTemporal = PersonajeFactory::crearArma(armasDisponibles[i]); // Crear un arma temporal para obtener su daño
+        cout << i + 1 << ": " << armasDisponibles[i] << " (Daño adicional: " << armaTemporal->obtenerDanio() << ")\n";
     }
 
     // Elegir arma
@@ -52,7 +51,7 @@ int main() {
     string armaElegida = armasDisponibles[opcionArma - 1];
     auto armaJugador1 = PersonajeFactory::crearArma(armaElegida);
     jugador1->agregarArma(armaJugador1);
-    cout << "Has elegido el arma: " << armaJugador1->obtenerNombre() << ".\n";
+    cout << "Has elegido el arma: " << armaJugador1->obtenerNombre() << " con un daño de " << armaJugador1->obtenerDanio() << ".\n";
 
     // Crear personaje y arma para el jugador 2 (aleatorio)
     string personajeAleatorio = personajesDisponibles[PersonajeFactory::generarNumeroAleatorio(0, personajesDisponibles.size() - 1)];

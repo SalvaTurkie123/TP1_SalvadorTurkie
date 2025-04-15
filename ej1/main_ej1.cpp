@@ -33,9 +33,14 @@ int main() {
     armas.push_back(PersonajeFactory::crearArma("LibroHechizos"));
     armas.push_back(PersonajeFactory::crearArma("Pocion"));
 
-    // Asignar armas a los personajes
+    // Asignar armas a los personajes (0, 1 o 2 armas)
     for (size_t i = 0; i < personajes.size(); ++i) {
-        personajes[i]->agregarArma(armas[i % armas.size()]);
+        int cantidadArmas = PersonajeFactory::generarNumeroAleatorio(0, 2); // Generar un número aleatorio entre 0 y 2
+        for (int j = 0; j < cantidadArmas; ++j) {
+            int indiceArma = PersonajeFactory::generarNumeroAleatorio(0, armas.size() - 1); // Generar un índice aleatorio para las armas
+            personajes[i]->agregarArma(armas[indiceArma]);
+        }
+        
     }
 
     // Imprimir personajes y sus armas
