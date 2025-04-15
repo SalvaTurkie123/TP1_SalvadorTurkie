@@ -1,5 +1,5 @@
 #pragma once
-#include "../Personaje.h"
+#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej1/Personajes/Personaje.h"
 
 class Guerrero : public IPersonaje {
 protected:

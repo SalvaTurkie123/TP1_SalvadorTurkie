@@ -3,7 +3,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej2/Personajes/Personaje.h"
+#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej1/Personajes/Personaje.h"
 
 using namespace std;
 

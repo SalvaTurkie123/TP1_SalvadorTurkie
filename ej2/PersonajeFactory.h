@@ -4,8 +4,8 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej2/Personajes/Personaje.h"
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej2/Armas/Arma.h"
+#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej1/Personajes/Personaje.h"
+#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej1/Armas/Arma.h"
 
 using namespace std;
 
