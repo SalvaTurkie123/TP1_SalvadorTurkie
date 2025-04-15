@@ -12,10 +12,15 @@ int main() {
     cout << "\nPersonajes generados:\n";
     for (const auto& personaje : personajes) {
         cout << " - " << personaje->obtenerNombre() << " con armas:\n";
-        for (const auto& arma : personaje->obtenerArmas()) {
-            cout << "   * " << arma->obtenerNombre() << " (" << arma->obtenerRareza() << ")\n";
+        const auto& armas = personaje->obtenerArmas();
+        if (armas.empty()) {
+            cout << "   * Sin armas asignadas.\n";
+        } else {
+            for (const auto& arma : armas) {
+                cout << "   * " << arma->obtenerNombre() << " (Rareza: " << arma->obtenerRareza() << ")\n";
+            }
         }
     }
-
     return 0;
 }
+

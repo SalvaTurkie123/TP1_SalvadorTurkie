@@ -29,5 +29,5 @@ public:
     virtual void usarHabilidadEspecial() const = 0;
     virtual void mejorarArma() = 0;
 
-
+    
 };
