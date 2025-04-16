@@ -2,27 +2,27 @@
 #include <vector>
 
 #include "PersonajeFactory.h"
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej1/Personajes/Magos/Hechicero.h"
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej1/Personajes/Magos/Conjurador.h"
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej1/Personajes/Magos/Brujo.h"
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej1/Personajes/Magos/Nigromante.h"
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej1/Personajes/Guerreros/Barbaro.h"
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej1/Personajes/Guerreros/Caballero.h"
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej1/Personajes/Guerreros/Gladiador.h"
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej1/Personajes/Guerreros/Mercenario.h"
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej1/Personajes/Guerreros/Paladin.h"
+#include "../ej1/Personajes/Magos/Hechicero.h"
+#include "../ej1/Personajes/Magos/Conjurador.h"
+#include "../ej1/Personajes/Magos/Brujo.h"
+#include "../ej1/Personajes/Magos/Nigromante.h"
+#include "../ej1/Personajes/Guerreros/Barbaro.h"
+#include "../ej1/Personajes/Guerreros/Caballero.h"
+#include "../ej1/Personajes/Guerreros/Gladiador.h"
+#include "../ej1/Personajes/Guerreros/Mercenario.h"
+#include "../ej1/Personajes/Guerreros/Paladin.h"
 
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej1/Armas/ArmasCombate/ArmaCombate.h"
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej1/Armas/ArmasCombate/Espada.h"
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej1/Armas/ArmasCombate/Garrote.h"
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej1/Armas/ArmasCombate/HachaSimple.h"
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej1/Armas/ArmasCombate/HachaDoble.h"
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej1/Armas/ArmasCombate/Lanza.h"
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej1/Armas/ItemsMagicos/ItemMagico.h"
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej1/Armas/ItemsMagicos/Baston.h"
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej1/Armas/ItemsMagicos/LibroHechizos.h"
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej1/Armas/ItemsMagicos/Pocion.h"
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej1/Armas/ItemsMagicos/Amuleto.h"
+#include "../ej1/Armas/ArmasCombate/ArmaCombate.h"
+#include "../ej1/Armas/ArmasCombate/Espada.h"
+#include "../ej1/Armas/ArmasCombate/Garrote.h"
+#include "../ej1/Armas/ArmasCombate/HachaSimple.h"
+#include "../ej1/Armas/ArmasCombate/HachaDoble.h"
+#include "../ej1/Armas/ArmasCombate/Lanza.h"
+#include "../ej1/Armas/ItemsMagicos/ItemMagico.h"
+#include "../ej1/Armas/ItemsMagicos/Baston.h"
+#include "../ej1/Armas/ItemsMagicos/LibroHechizos.h"
+#include "../ej1/Armas/ItemsMagicos/Pocion.h"
+#include "../ej1/Armas/ItemsMagicos/Amuleto.h"
 
 void PersonajeFactory::inicializarRandom() {
     // Inicializa el generador de números aleatorios con la hora actual
@@ -36,25 +36,25 @@ int PersonajeFactory::generarNumeroAleatorio(int min, int max) {
 
 // Método para crear un personaje dinámicamente
 /*Creación de personajes: El método crearPersonaje recibe un tipo de personaje como parámetro y devuelve un puntero a un objeto del tipo solicitado*/
-shared_ptr<IPersonaje> PersonajeFactory::crearPersonaje(const string& tipo) {
+unique_ptr<IPersonaje> PersonajeFactory::crearPersonaje(const string& tipo) {
     if (tipo == "Hechicero") {
-        return make_shared<Hechicero>("Hechicero", 1, 100, 50, "Fuego");
+        return make_unique<Hechicero>("Hechicero", 1, 100, 50, "Fuego");
     } else if (tipo == "Conjurador") {
-        return make_shared<Conjurador>("Conjurador", 1, 100, 50, "Invocación");
+        return make_unique<Conjurador>("Conjurador", 1, 100, 50, "Invocación");
     } else if (tipo == "Brujo") {
-        return make_shared<Brujo>("Brujo", 1, 100, 50, "Oscuridad");
+        return make_unique<Brujo>("Brujo", 1, 100, 50, "Oscuridad");
     } else if (tipo == "Nigromante") {
-        return make_shared<Nigromante>("Nigromante", 1, 100, 50, "Necromancia");
+        return make_unique<Nigromante>("Nigromante", 1, 100, 50, "Necromancia");
     } else if (tipo == "Barbaro") {
-        return make_shared<Barbaro>("Barbaro", 1, 150, 70, "Hacha");
+        return make_unique<Barbaro>("Barbaro", 1, 150, 70, "Hacha");
     } else if (tipo == "Caballero") {
-        return make_shared<Caballero>("Caballero", 1, 120, 60, "Espada");
+        return make_unique<Caballero>("Caballero", 1, 120, 60, "Espada");
     } else if (tipo == "Gladiador") {
-        return make_shared<Gladiador>("Gladiador", 1, 130, 65, "Lanza");
+        return make_unique<Gladiador>("Gladiador", 1, 130, 65, "Lanza");
     } else if (tipo == "Mercenario") {
-        return make_shared<Mercenario>("Mercenario", 1, 110, 55, "Garrote");
+        return make_unique<Mercenario>("Mercenario", 1, 110, 55, "Garrote");
     } else if (tipo == "Paladin") {
-        return make_shared<Paladin>("Paladin", 1, 140, 60, "Martillo");
+        return make_unique<Paladin>("Paladin", 1, 140, 60, "Martillo");
     } else {
         throw invalid_argument("Tipo de personaje no reconocido: " + tipo);
     }
@@ -62,25 +62,25 @@ shared_ptr<IPersonaje> PersonajeFactory::crearPersonaje(const string& tipo) {
 
 // Método para crear un arma dinámicamente
 /*Creación de armas: El método crearArma funciona de manera similar, devolviendo un puntero a un arma del tipo solicitado*/
-shared_ptr<IArma> PersonajeFactory::crearArma(const string& tipo) {
+unique_ptr<IArma> PersonajeFactory::crearArma(const string& tipo) {
     if (tipo == "Espada") {
-        return make_shared<Espada>("Espada", 50, 5.0, "Rara", "Acero");
+        return make_unique<Espada>("Espada", 50, 5.0, "Rara", "Acero");
     } else if (tipo == "Garrote") {
-        return make_shared<Garrote>("Garrote", 30, 4.0, "Común", "Madera");
+        return make_unique<Garrote>("Garrote", 30, 4.0, "Común", "Madera");
     } else if (tipo == "HachaSimple") {
-        return make_shared<HachaSimple>("Hacha Simple", 40, 6.0, "Común", "Hierro");
+        return make_unique<HachaSimple>("Hacha Simple", 40, 6.0, "Común", "Hierro");
     } else if (tipo == "HachaDoble") {
-        return make_shared<HachaDoble>("Hacha Doble", 60, 8.0, "Épica", "Acero");
+        return make_unique<HachaDoble>("Hacha Doble", 60, 8.0, "Épica", "Acero");
     } else if (tipo == "Lanza") {
-        return make_shared<Lanza>("Lanza", 45, 5.5, "Rara", "Acero");
+        return make_unique<Lanza>("Lanza", 45, 5.5, "Rara", "Acero");
     } else if (tipo == "Baston") {
-        return make_shared<Baston>("Baston", 20, 3.0, "Común", "Madera");
+        return make_unique<Baston>("Baston", 20, 3.0, "Común", "Madera");
     } else if (tipo == "LibroHechizos") {
-        return make_shared<LibroHechizos>("Libro de Hechizos", 35, 2.5, "Raro", "Papel");
+        return make_unique<LibroHechizos>("Libro de Hechizos", 35, 2.5, "Raro", "Papel");
     } else if (tipo == "Pocion") {
-        return make_shared<Pocion>("Poción", 0, 1.0, "Común", "Cristal");
+        return make_unique<Pocion>("Poción", 0, 1.0, "Común", "Cristal");
     } else if (tipo == "Amuleto") {
-        return make_shared<Amuleto>("Amuleto", 10, 0.5, "Épico", "Oro");
+        return make_unique<Amuleto>("Amuleto", 10, 0.5, "Épico", "Oro");
     } else {
         throw invalid_argument("Tipo de arma no reconocido: " + tipo);
     }
@@ -89,7 +89,7 @@ shared_ptr<IArma> PersonajeFactory::crearArma(const string& tipo) {
 
 // Método para crear un personaje armado
 /*Creación de personajes armados: El método crearPersonajeArmado combina los dos anteriores para crear un personaje con un número específico de armas*/
-shared_ptr<IPersonaje> PersonajeFactory::crearPersonajeArmado(const string& tipoPersonaje, int cantidadArmas) {
+unique_ptr<IPersonaje> PersonajeFactory::crearPersonajeArmado(const string& tipoPersonaje, int cantidadArmas) {
     // Crear el personaje
     auto personaje = crearPersonaje(tipoPersonaje);
 
@@ -97,16 +97,15 @@ shared_ptr<IPersonaje> PersonajeFactory::crearPersonajeArmado(const string& tipo
     vector<string> tiposArmas = {"Espada", "Garrote", "HachaSimple", "HachaDoble", "Lanza", "Baston", "LibroHechizos", "Pocion", "Amuleto"};
     for (int i = 0; i < cantidadArmas; ++i) {
         int indiceArma = generarNumeroAleatorio(0, tiposArmas.size() - 1);
-        auto arma = crearArma(tiposArmas[indiceArma]);
-        personaje->agregarArma(arma);
+        personaje->agregarArma(crearArma(tiposArmas[indiceArma]));
     }
 
     return personaje;
 }
 
 // Método para generar personajes con armas
-vector<shared_ptr<IPersonaje>> PersonajeFactory::generarPersonajesConArmas() {
-    vector<shared_ptr<IPersonaje>> personajes;
+vector<unique_ptr<IPersonaje>> PersonajeFactory::generarPersonajesConArmas() {
+    vector<unique_ptr<IPersonaje>> personajes;
 
     // Generar cantidad aleatoria de magos y guerreros
     int cantidadMagos = generarNumeroAleatorio(3, 7);
@@ -122,16 +121,14 @@ vector<shared_ptr<IPersonaje>> PersonajeFactory::generarPersonajesConArmas() {
     for (int i = 0; i < cantidadMagos; ++i) {
         int indiceMago = generarNumeroAleatorio(0, tiposMagos.size() - 1);
         int cantidadArmas = generarNumeroAleatorio(0, 2);
-        auto mago = crearPersonajeArmado(tiposMagos[indiceMago], cantidadArmas);
-        personajes.push_back(mago);
+        personajes.push_back(crearPersonajeArmado(tiposMagos[indiceMago], cantidadArmas));
     }
 
     // Generar guerreros
     for (int i = 0; i < cantidadGuerreros; ++i) {
         int indiceGuerrero = generarNumeroAleatorio(0, tiposGuerreros.size() - 1);
         int cantidadArmas = generarNumeroAleatorio(0, 2);
-        auto guerrero = crearPersonajeArmado(tiposGuerreros[indiceGuerrero], cantidadArmas);
-        personajes.push_back(guerrero);
+        personajes.push_back(crearPersonajeArmado(tiposGuerreros[indiceGuerrero], cantidadArmas));
     }
 
     return personajes;

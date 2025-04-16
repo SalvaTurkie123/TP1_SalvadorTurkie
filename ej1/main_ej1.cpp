@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <memory>
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej2/PersonajeFactory.h"
+#include "../ej2/PersonajeFactory.h"
 
 using namespace std;
 
@@ -10,7 +10,7 @@ int main() {
     PersonajeFactory::inicializarRandom();
 
     // Crear personajes utilizando PersonajeFactory
-    vector<shared_ptr<IPersonaje>> personajes;
+    vector<unique_ptr<IPersonaje>> personajes;
     personajes.push_back(PersonajeFactory::crearPersonaje("Hechicero"));
     personajes.push_back(PersonajeFactory::crearPersonaje("Conjurador"));
     personajes.push_back(PersonajeFactory::crearPersonaje("Brujo"));
@@ -22,7 +22,7 @@ int main() {
     personajes.push_back(PersonajeFactory::crearPersonaje("Paladin"));
 
     // Crear más armas utilizando PersonajeFactory
-    vector<shared_ptr<IArma>> armas;
+    vector<unique_ptr<IArma>> armas;
     armas.push_back(PersonajeFactory::crearArma("Espada"));
     armas.push_back(PersonajeFactory::crearArma("Garrote"));
     armas.push_back(PersonajeFactory::crearArma("Baston"));
@@ -35,23 +35,43 @@ int main() {
 
     // Asignar armas a los personajes (0, 1 o 2 armas)
     for (size_t i = 0; i < personajes.size(); ++i) {
-        int cantidadArmas = PersonajeFactory::generarNumeroAleatorio(0, 2); // Generar un número aleatorio entre 0 y 2
+        int cantidadArmas = PersonajeFactory::generarNumeroAleatorio(0, 2);
         for (int j = 0; j < cantidadArmas; ++j) {
-            int indiceArma = PersonajeFactory::generarNumeroAleatorio(0, armas.size() - 1); // Generar un índice aleatorio para las armas
-            personajes[i]->agregarArma(armas[indiceArma]);
+            int indiceArma = PersonajeFactory::generarNumeroAleatorio(0, armas.size() - 1);
+            // Transferimos la propiedad del arma al personaje usando std::move
+            if (!armas.empty()) {
+                personajes[i]->agregarArma(std::move(armas[indiceArma]));
+                // Removemos el arma del vector ya que fue transferida
+                armas.erase(armas.begin() + indiceArma);
+            }
         }
-        
     }
 
     // Imprimir personajes y sus armas
-    cout << "Personajes creados:\n";
+    cout << "=============================\n";
+    cout << "     Personajes creados      \n";
+    cout << "=============================\n";
+
     for (const auto& personaje : personajes) {
-        cout << " - " << personaje->obtenerNombre() << " (Nivel: " << personaje->obtenerNivel() << ", Vida: " << personaje->obtenerVida() << ")\n";
+        cout << "\n- " << personaje->obtenerNombre() 
+            << " (Nivel: " << personaje->obtenerNivel() 
+            << ", Vida: " << personaje->obtenerVida() << ")\n";
+
         cout << "   Armas:\n";
-        for (const auto& arma : personaje->obtenerArmas()) {
-            cout << "     * " << arma->obtenerNombre() << " (" << arma->obtenerRareza() << ", Daño: " << arma->obtenerDanio() << ")\n";
+
+        const auto& armas = personaje->obtenerArmas();
+        if (armas.empty()) {
+            cout << "     * Sin armas asignadas.\n";
+        } else {
+            for (const auto& arma : armas) {
+                cout << "     * " << arma->obtenerNombre() 
+                    << " (Rareza: " << arma->obtenerRareza() 
+                    << ", Daño: " << arma->obtenerDanio() << ")\n";
+            }
         }
     }
 
-    return 0;
+    cout << "\n=============================\n";
+    cout << "       Fin de la lista       \n";
+    cout << "=============================\n";
 }

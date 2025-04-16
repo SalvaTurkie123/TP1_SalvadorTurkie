@@ -1,5 +1,5 @@
 #pragma once
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej1/Armas/Arma.h"
+#include "../Arma.h"
 
 using namespace std;
 

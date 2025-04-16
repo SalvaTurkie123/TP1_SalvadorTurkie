@@ -17,10 +17,10 @@ int Mago::obtenerVida() const {
     return vida;
 }
 
-void Mago::agregarArma(shared_ptr<IArma> arma) {
-    armas.push_back(arma);
+void Mago::agregarArma(unique_ptr<IArma> arma) {
+    armas.push_back(std::move(arma));
 }
 
-const vector<shared_ptr<IArma>>& Mago::obtenerArmas() const {
+const vector<unique_ptr<IArma>>& Mago::obtenerArmas() const {
     return armas;
 }

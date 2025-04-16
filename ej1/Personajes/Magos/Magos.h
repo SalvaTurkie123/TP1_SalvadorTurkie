@@ -10,7 +10,7 @@ protected:
     int vida;
     int mana;
     string especialidad;
-    vector<shared_ptr<IArma>> armas; // Relación "has-a"
+    vector<unique_ptr<IArma>> armas; // Relación "has-a"
 
 public:
 
@@ -22,8 +22,8 @@ public:
     string obtenerNombre() const override;
     int obtenerNivel() const override;
     int obtenerVida() const override;
-    void agregarArma(shared_ptr<IArma> arma) override;
-    const vector<shared_ptr<IArma>>& obtenerArmas() const override;
+    void agregarArma(unique_ptr<IArma> arma) override;
+    const vector<unique_ptr<IArma>>& obtenerArmas() const override;
 
     // Métodos específicos de Mago
     virtual void lanzarHechizo() const = 0;

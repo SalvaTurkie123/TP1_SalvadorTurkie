@@ -1,5 +1,5 @@
 #pragma once
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej1/Personajes/Personaje.h"
+#include "../Personaje.h"
 
 class Guerrero : public IPersonaje {
 
@@ -10,7 +10,7 @@ protected:
     int vida;
     int fuerza;
     string armaFavorita;
-    vector<shared_ptr<IArma>> armas; // Relacion 'has-a
+    vector<unique_ptr<IArma>> armas; // Relacion 'has-a
 
 public:
 
@@ -22,8 +22,8 @@ public:
     string obtenerNombre() const override;
     int obtenerNivel() const override;
     int obtenerVida() const override;
-    void agregarArma(shared_ptr<IArma> arma) override;
-    const vector<shared_ptr<IArma>>& obtenerArmas() const override;
+    void agregarArma(unique_ptr<IArma> arma) override;
+    const vector<unique_ptr<IArma>>& obtenerArmas() const override;
     
     // Métodos específicos de Guerrero
     virtual void usarHabilidadEspecial() const = 0;

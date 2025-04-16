@@ -17,10 +17,10 @@ int Guerrero::obtenerVida() const {
     return vida;
 }
 
-void Guerrero::agregarArma(shared_ptr<IArma> arma) {
-    armas.push_back(arma);
+void Guerrero::agregarArma(unique_ptr<IArma> arma) {
+    armas.push_back(std::move(arma));
 }
 
-const vector<shared_ptr<IArma>>& Guerrero::obtenerArmas() const {
+const vector<unique_ptr<IArma>>& Guerrero::obtenerArmas() const {
     return armas;
 }

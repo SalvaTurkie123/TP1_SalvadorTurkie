@@ -3,7 +3,7 @@
 #include <iostream> // Librería para manejar entrada/salida
 #include <memory> // Librería para manejar punteros inteligentes
 #include <vector> // Librería para manejar vectores
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej1/Armas/Arma.h"
+#include "../Armas/Arma.h"
 
 using namespace std;
 
@@ -20,6 +20,6 @@ public:
     virtual void defender() const = 0;
 
     // Métodos virtuales puros para obtener y agregar armas
-    virtual void agregarArma(shared_ptr<IArma> arma) = 0; // En este caso puedo agregar la cantidad de armas que quiera
-    virtual const vector<shared_ptr<IArma>>& obtenerArmas() const = 0;      
+    virtual void agregarArma(unique_ptr<IArma> arma) = 0;
+    virtual const vector<unique_ptr<IArma>>& obtenerArmas() const = 0;      
 };

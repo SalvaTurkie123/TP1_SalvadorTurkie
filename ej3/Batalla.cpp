@@ -1,32 +1,27 @@
 #include "Batalla.h"
 
-
-Batalla::Batalla(shared_ptr<IPersonaje> jugador1 , shared_ptr<IPersonaje> jugador2) 
-    : jugador1(jugador1), jugador2(jugador2), hpJugador1(100), hpJugador2(100) {}
+Batalla::Batalla(unique_ptr<IPersonaje> j1, unique_ptr<IPersonaje> j2) 
+    : jugador1(std::move(j1)), jugador2(std::move(j2)), hpJugador1(100), hpJugador2(100) {}
 
 string Batalla::obtenerNombreAtaque(int opcion) const {
-
-        switch (opcion) {
-            case 1: return "Golpe Fuerte";
-            case 2: return "Golpe Rapido";
-            case 3: return "Defensa y Golpe";
-            default: return "Desconocido";
-        }
-
+    switch (opcion) {
+        case 1: return "Golpe Fuerte";
+        case 2: return "Golpe Rapido";
+        case 3: return "Defensa y Golpe";
+        default: return "Desconocido";
+    }
 }
 
 int Batalla::calcularResultado(int opcionJugador1, int opcionJugador2) const {
-
     if (opcionJugador1 == opcionJugador2) return 0; // Empate
-
-    if ((opcionJugador1 == 1 && opcionJugador2 == 2) || (opcionJugador1 == 2 && opcionJugador2 == 3) || (opcionJugador1 == 3 && opcionJugador2 == 1) ) return 1; // Gana el jugador 1
-
+    if ((opcionJugador1 == 1 && opcionJugador2 == 2) || 
+        (opcionJugador1 == 2 && opcionJugador2 == 3) || 
+        (opcionJugador1 == 3 && opcionJugador2 == 1)) return 1; // Gana el jugador 1
     return -1; // Gana el segundo jugador
-
 }
 
-int dañoAdicional(shared_ptr<IArma> arma) {
-    return arma ? arma->obtenerDanio() : 0; // Si no hay arma, no hay daño adicional
+int dañoAdicional(const vector<unique_ptr<IArma>>& armas) {
+    return !armas.empty() ? armas[0]->obtenerDanio() : 0; // Si no hay arma, no hay daño adicional
 }
 
 void Batalla::iniciar() {
@@ -45,8 +40,10 @@ void Batalla::iniciar() {
         cout << "-----------------------------------------\n";
 
         // Mostrar armas de los jugadores
-        string armaJugador1 = jugador1->obtenerArmas().empty() ? "sin arma" : jugador1->obtenerArmas()[0]->obtenerNombre();
-        string armaJugador2 = jugador2->obtenerArmas().empty() ? "sin arma" : jugador2->obtenerArmas()[0]->obtenerNombre();
+        const auto& armasJ1 = jugador1->obtenerArmas();
+        const auto& armasJ2 = jugador2->obtenerArmas();
+        string armaJugador1 = armasJ1.empty() ? "sin arma" : armasJ1[0]->obtenerNombre();
+        string armaJugador2 = armasJ2.empty() ? "sin arma" : armasJ2[0]->obtenerNombre();
 
         // Opción jugador 1
         int opcionJugador1;
@@ -69,12 +66,12 @@ void Batalla::iniciar() {
         // Calcular el resultado
         int resultado = calcularResultado(opcionJugador1, opcionJugador2);
         if (resultado == 1) {
-            int daño = 10 + dañoAdicional(jugador1->obtenerArmas().empty() ? nullptr : jugador1->obtenerArmas()[0]);
+            int daño = 10 + dañoAdicional(jugador1->obtenerArmas());
             cout << "\nResultado: " << jugador1->obtenerNombre() << " gana esta ronda y hace " 
                  << daño << " puntos de daño.\n";
             hpJugador2 -= daño;
         } else if (resultado == -1) {
-            int daño = 10 + dañoAdicional(jugador2->obtenerArmas().empty() ? nullptr : jugador2->obtenerArmas()[0]);
+            int daño = 10 + dañoAdicional(jugador2->obtenerArmas());
             cout << "\nResultado: " << jugador2->obtenerNombre() << " gana esta ronda y hace " 
                  << daño << " puntos de daño.\n";
             hpJugador1 -= daño;

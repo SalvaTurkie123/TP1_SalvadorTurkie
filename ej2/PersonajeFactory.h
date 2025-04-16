@@ -4,8 +4,8 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej1/Personajes/Personaje.h"
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej1/Armas/Arma.h"
+#include "../ej1/Personajes/Personaje.h"
+#include "../ej1/Armas/Arma.h"
 
 using namespace std;
 
@@ -18,15 +18,15 @@ public:
     static int generarNumeroAleatorio(int min, int max);
 
     // Método para crear un personaje dinámicamente
-    static shared_ptr<IPersonaje> crearPersonaje(const string& tipo);
+    static unique_ptr<IPersonaje> crearPersonaje(const string& tipo);
 
     // Método para crear un arma dinámicamente
-    static shared_ptr<IArma> crearArma(const string& tipo);
+    static unique_ptr<IArma> crearArma(const string& tipo);
 
     // Método para crear un personaje armado
-    static shared_ptr<IPersonaje> crearPersonajeArmado(const string& tipoPersonaje, int cantidadArmas);
+    static unique_ptr<IPersonaje> crearPersonajeArmado(const string& tipoPersonaje, int cantidadArmas);
 
     // Nuevo método para generar personajes con armas
-    static vector<shared_ptr<IPersonaje>> generarPersonajesConArmas();
+    static vector<unique_ptr<IPersonaje>> generarPersonajesConArmas();
 
 };

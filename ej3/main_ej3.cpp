@@ -1,5 +1,5 @@
 #include "Batalla.h"
-#include "/root/PARADIGMAS/TPS/TP1_SalvadorTurkie/ej2/PersonajeFactory.h"
+#include "../ej2/PersonajeFactory.h"
 
 int main() {
 
@@ -49,20 +49,21 @@ int main() {
         cin >> opcionArma;
     }
     string armaElegida = armasDisponibles[opcionArma - 1];
-    auto armaJugador1 = PersonajeFactory::crearArma(armaElegida);
-    jugador1->agregarArma(armaJugador1);
-    cout << "Has elegido el arma: " << armaJugador1->obtenerNombre() << " con un daño de " << armaJugador1->obtenerDanio() << ".\n";
+    jugador1->agregarArma(PersonajeFactory::crearArma(armaElegida));
 
     // Crear personaje y arma para el jugador 2 (aleatorio)
     string personajeAleatorio = personajesDisponibles[PersonajeFactory::generarNumeroAleatorio(0, personajesDisponibles.size() - 1)];
     auto jugador2 = PersonajeFactory::crearPersonaje(personajeAleatorio);
     string armaAleatoria = armasDisponibles[PersonajeFactory::generarNumeroAleatorio(0, armasDisponibles.size() - 1)];
-    auto armaJugador2 = PersonajeFactory::crearArma(armaAleatoria);
-    jugador2->agregarArma(armaJugador2);
-    cout << "El jugador 2 ha elegido al personaje: " << jugador2->obtenerNombre() << " con el arma: " << armaJugador2->obtenerNombre() << ".\n";
+    jugador2->agregarArma(PersonajeFactory::crearArma(armaAleatoria));
+
+    // Mostrar información del jugador 2
+    const auto& armasJ2 = jugador2->obtenerArmas();
+    cout << "El jugador 2 ha elegido al personaje: " << jugador2->obtenerNombre() 
+         << " con el arma: " << (armasJ2.empty() ? "sin arma" : armasJ2[0]->obtenerNombre()) << ".\n";
 
     // Iniciar la batalla
-    Batalla batalla(jugador1, jugador2);
+    Batalla batalla(std::move(jugador1), std::move(jugador2));
     batalla.iniciar();
 
     return 0;
